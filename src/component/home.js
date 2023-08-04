@@ -1,18 +1,30 @@
+// Home.js
 import React from "react";
+import "./home.css";
 import { Link } from "react-router-dom";
+import image1 from "../img/image1.png";
 
 function Home() {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <ul>
-        <li>
-          <Link to="/chat">Go to Chat</Link>
-        </li>
-        <li>
-          <Link to="/custom">Go to Custom</Link>
-        </li>
-      </ul>
+    <div className="home-container">
+      <h1 className="home-title">Home Page</h1>
+      <Link to="/custom" className="custom-link">
+        Go to Custom
+      </Link>
+      <div className="img-container">
+        <Link to="/chat">
+          <img src={image1} alt="" />
+        </Link>
+        <Link to="/chat">
+          <img src={image1} alt="" />
+        </Link>
+        <Link to="/chat">
+          <img src={image1} alt="" />
+        </Link>
+        <Link to="/chat">
+          <img src={image1} alt="" />
+        </Link>
+      </div>
     </div>
   );
 }

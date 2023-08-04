@@ -1,0 +1,38 @@
+/* home.css */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 상단으로 정렬 */
+  align-items: center;
+  height: 100vh;
+  padding-top: 50px; /* 원하는 여백 값 조정 */
+}
+
+.home-title {
+  text-align: center;
+  margin-top: 20px; /* 원하는 여백 값 조정 */
+}
+
+.custom-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.img-container a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.img-container img {
+  width: 300px;
+  height: 500px;
+}
