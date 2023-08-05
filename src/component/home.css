@@ -9,10 +9,16 @@
   align-items: center;
   margin-bottom: 20px;
 }
-
+.logo {
+  display: flex;
+  width: 110px;
+  height: auto;
+}
+.logo-container {
+  position: relative;
+}
 .home-title {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 15px;
   margin: 0;
 }
 
@@ -40,7 +46,6 @@
 
 .img-description {
   font-size: 16px;
-  font-weight: bold;
 }
 
 /* Optional: Add responsive styles for different screen sizes if needed */
