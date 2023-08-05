@@ -21,28 +21,32 @@ function Home() {
       </div>
       <Row className="img-container" gutter={[20, 20]}>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
-          <Link to="/chat1">
+          <Link to="/chat">
             <img src={image1} alt="" className="img-with-name" />
           </Link>
-          <span className="img-description">Image 1 - Description</span>
+          <span className="img-description">Image 1</span>
+          <span className="img-description">Description</span>
         </Col>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
           <Link to="/chat">
             <img src={image2} alt="" className="img-with-name" />
           </Link>
-          <span className="img-description">Image 2 - Description</span>
+          <span className="img-description">Image 2</span>
+          <span className="img-description">Description</span>{" "}
         </Col>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
           <Link to="/chat">
             <img src={image3} alt="" className="img-with-name" />
           </Link>
-          <span className="img-description">Image 3 - Description</span>
+          <span className="img-description">Image 3</span>
+          <span className="img-description">Description</span>{" "}
         </Col>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
           <Link to="/chat">
             <img src={image4} alt="" className="img-with-name" />
           </Link>
-          <span className="img-description">Image 4 - Description</span>
+          <span className="img-description">Image 4</span>
+          <span className="img-description">Description</span>{" "}
         </Col>
       </Row>
     </div>

@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  position: fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.image1 {
+  height: 400px;
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align the content to the top */
+  align-items: center;
+  padding: 20px; /* Add some padding to center the content */
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+  margin-top: 20px; /* Add some margin between the image and the chat */
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 500px;
+  width: 80%; /* Limit the width of the chat container */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.message {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background-color: white;
+  color: black;
+  max-width: 70%;
+}
+
+.homeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
