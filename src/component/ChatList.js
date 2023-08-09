@@ -1,11 +1,20 @@
-import React from 'react';
+// ChatList.js
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ChatList = () => {
-  const chatBots = [
+  const [chatBots, setChatBots] = useState([
     { id: 1, name: 'ChatBot 1' },
     { id: 2, name: 'ChatBot 2' },
-    // Add more chatbots here...
-  ];
+  ]);
+
+  const handleAddChatBot = () => {
+    const newChatBot = {
+      id: chatBots.length + 1,
+      name: `ChatBot ${chatBots.length + 1}`,
+    };
+    setChatBots((prevChatBots) => [...prevChatBots, newChatBot]);
+  };
 
   return (
     <div>
@@ -13,13 +22,12 @@ const ChatList = () => {
       <ul>
         {chatBots.map((chatBot) => (
           <li key={chatBot.id}>
-            <a href={`/chat/${chatBot.id}`}>{chatBot.name}</a>
+            <Link to={`/chat/${chatBot.name}`}>{chatBot.name}</Link>
           </li>
         ))}
       </ul>
-      <p>
-        This is the ChatList component. Click on a chatbot name to view its chat.
-      </p>
+      <button onClick={handleAddChatBot}>Add ChatBot</button>
+      <p>This is the ChatList component. Click on a chatbot name to view its chat.</p>
     </div>
   );
 };

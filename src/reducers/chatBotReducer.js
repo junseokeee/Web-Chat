@@ -1,7 +1,7 @@
 // reducers/chatBotReducer.js
 const initialState = [
     { id: 1, name: 'ChatBot 1' },
-    { id: 2, name: 'ChatBot 2' },
+    { id: 2, name: '스티브 잡스' },
     // Add more chatbots here...
   ];
   
