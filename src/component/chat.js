@@ -83,7 +83,7 @@ import React, { useState, useEffect } from 'react';
 import { Configuration, OpenAIApi } from 'openai';
 import './chat.css'; // Import your CSS file for styling
 
-const API_KEY = 'sk-...';
+const API_KEY = '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';
 
 const configuration = new Configuration({
   apiKey: API_KEY,
