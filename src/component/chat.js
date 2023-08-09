@@ -1,71 +1,169 @@
-import React, { useState } from "react";
-import axios from "axios";
+// import React, { useState } from "react";
+// import { Configuration, OpenAIApi } from "openai";
 
-const Chat = () => {
-  const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState("");
 
-  const apiUrl = "ba25db12697d62154d2f121091d9aeb2"; // KoGPT API endpoint (e.g., your backend server URL that interfaces with KoGPT)
+// const configuration = new Configuration({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
+// const openai = new OpenAIApi(configuration);
 
-  const handleInputChange = (e) => {
-    setInputMessage(e.target.value);
+// const Chat = () => {
+//   const [inputMessage, setInputMessage] = useState("");
+//   const [messages, setMessages] = useState([]);
+
+//   const handleInputChange = (e) => {
+//     setInputMessage(e.target.value);
+//   };
+
+//   const handleSendMessage = async () => {
+//     if (inputMessage.trim() === "") return;
+
+//     const newMessage = {
+//       role: "user",
+//       content: inputMessage,
+//     };
+
+//     setMessages([...messages, newMessage]);
+//     setInputMessage("");
+
+//     try {
+//       const response = await openai.createChatCompletion({
+//         model: "gpt-3.5-turbo",
+//         messages: [...messages, newMessage], // Include the new user message
+//         temperature: 0.3,
+//         max_tokens: 256,
+//         top_p: 1,
+//         frequency_penalty: 0,
+//         presence_penalty: 0,
+//       });
+
+//       const aiReply = response.data.choices[0].message.content;
+//       const aiMessage = {
+//         role: "ai",
+//         content: aiReply,
+//       };
+
+//       setMessages([...messages, aiMessage]);
+//     } catch (error) {
+//       // Handle API error
+//       console.error("Error fetching AI response:", error);
+//     }
+//   };
+
+
+// return (
+//   <div>
+//     <div style={{ height: "300px", overflow: "auto" }}>
+//       {messages.map((message, index) => (
+//         <div
+//           key={index}
+//           style={{ textAlign: message.role === "user" ? "right" : "left" }}
+//         >
+//           <span
+//             style={{
+//               display: "inline-block",
+//               padding: "5px",
+//               backgroundColor: message.role === "user" ? "#ddd" : "#1e90ff",
+//               color: "#fff",
+//               borderRadius: "10px",
+//             }}
+//           >
+//             {message.content}
+//           </span>
+//         </div>
+//       ))}
+//     </div>
+//     <div>
+//       <input type="text" value={inputMessage} onChange={handleInputChange} />
+//       <button onClick={handleSendMessage}>Send</button>
+//     </div>
+//   </div>
+// );
+import React, { useState, useEffect } from 'react';
+import { Configuration, OpenAIApi } from 'openai';
+import './chat.css'; // Import your CSS file for styling
+
+const API_KEY = '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';
+
+const configuration = new Configuration({
+  apiKey: API_KEY,
+});
+delete configuration.baseOptions.headers['User-Agent'];
+
+const openai = new OpenAIApi(configuration);
+
+function Chat() {
+  const [messages, setMessages] = useState([
+    {
+      role: 'system',
+      content: "A conversation friend who listens to my concerns.\nHelps people with concerns to come up with results on their own.",
+    },
+  ]);
+
+  const [loading, setLoading] = useState(false);
+
+  const addMessage = (role, content) => {
+    setMessages(prevMessages => [...prevMessages, { role, content }]);
   };
 
-  const handleSendMessage = async () => {
-    if (inputMessage.trim() === "") {
-      return;
+  useEffect(() => {
+    const generateResponse = async () => {
+      try {
+        setLoading(true);
+        const response = await openai.createChatCompletion({
+          model: 'gpt-3.5-turbo',
+          messages,
+          temperature: 1,
+          max_tokens: 256,
+          top_p: 1,
+          frequency_penalty: 0,
+          presence_penalty: 0,
+        });
+
+        const assistantResponse = response.data.choices[0].message.content;
+        addMessage('assistant', assistantResponse);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error generating conversation:', error);
+        setLoading(false);
+      }
+    };
+
+    if (messages[messages.length - 1].role === 'user') {
+      generateResponse();
     }
+  }, [messages]);
 
-    // Add the user message to the list
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: inputMessage, sender: "user" },
-    ]);
-    setInputMessage("");
-
-    try {
-      // Call the KoGPT API to get a response
-      const response = await axios.post(apiUrl, { message: inputMessage });
-
-      // Add the KoGPT response to the list
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: response.data.message, sender: "kogpt" },
-      ]);
-    } catch (error) {
-      console.error("Error fetching response from KoGPT:", error);
-      // Handle error if necessary
-    }
+  const handleUserMessage = userInput => {
+    addMessage('user', userInput);
   };
 
   return (
-    <div>
-      <div style={{ height: "300px", overflow: "auto" }}>
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            style={{ textAlign: message.sender === "user" ? "right" : "left" }}
-          >
-            <span
-              style={{
-                display: "inline-block",
-                padding: "5px",
-                backgroundColor: message.sender === "user" ? "#ddd" : "#1e90ff",
-                color: "#fff",
-                borderRadius: "10px",
-              }}
-            >
-              {message.text}
-            </span>
-          </div>
-        ))}
-      </div>
-      <div>
-        <input type="text" value={inputMessage} onChange={handleInputChange} />
-        <button onClick={handleSendMessage}>Send</button>
+    <div className="Chat">
+      <div className="chat-window">
+        <div className="messages">
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.role}`}>
+              {message.content}
+            </div>
+          ))}
+        </div>
+        <div className="user-input">
+          <input
+            type="text"
+            placeholder="Type your message..."
+            onKeyDown={e => {
+              if (e.key === 'Enter') {
+                handleUserMessage(e.target.value);
+                e.target.value = '';
+              }
+            }}
+          />
+        </div>
       </div>
     </div>
   );
-};
+}
+
 
 export default Chat;
