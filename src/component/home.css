@@ -1,0 +1,52 @@
+.home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .home-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .custom-link {
+    font-size: 18px;
+  }
+  
+  .img-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .img-container .ant-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .img-with-name {
+    max-width: 80%; /* Reduced the image size to 80% */
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .img-description {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Optional: Add responsive styles for different screen sizes if needed */
+  @media (max-width: 576px) {
+    .img-container {
+      flex-direction: column;
+    }
+  }
+  

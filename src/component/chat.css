@@ -15,4 +15,41 @@
   .chat-container::-webkit-scrollbar-thumb:hover {
     background-color: #555;
   }
+  .Chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
   
+  .chat-window {
+    width: 400px;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .messages {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message {
+    padding: 8px;
+    margin: 4px;
+    border-radius: 8px;
+    max-width: 80%;
+  }
+  
+  .user {
+    align-self: flex-end;
+    background-color: #ccf2ff;
+  }
+  
+  .assistant {
+    align-self: flex-start;
+    background-color: #e3e3e3;
+  }
+  
+  .user-input {
+    margin-top: 20px;
+  }
