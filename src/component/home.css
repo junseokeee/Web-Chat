@@ -47,10 +47,17 @@
 .img-description {
   font-size: 16px;
 }
-
-/* Optional: Add responsive styles for different screen sizes if needed */
-@media (max-width: 576px) {
-  .img-container {
-    flex-direction: column;
+.img-description-bold {
+  font-weight: bold;
+  font-size: 25px;
+}
+.rounded-image {
+  border-radius: 20%;
+  width: 600px;
+  height: auto;
+  padding: 5px;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(0.9);
   }
 }

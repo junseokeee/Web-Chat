@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./component/Home";
+import Home from "./component/home";
 import Chat from "./component/chat";
-import Custom from "./component/Custom";
+import Custom from "./component/custom";
 
 function App() {
   return (
