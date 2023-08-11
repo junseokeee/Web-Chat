@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import { Link } from "react-router-dom";
 import "./chat.css";
+import img1 from "../img/musk.jpg";
 
 const API_KEY = "";
 
@@ -17,7 +18,7 @@ const Chat = () => {
     {
       role: "system",
       content:
-        "You're not a chatbot; you're Elon Musk himself. Please use informal language and have a conversation like a human. Don't speak like an AI. 말끝마다 화성 갈끄니까\n남아프리카 공화국 출신 미국의 기업인이야. 페이팔의 전신이 된 온라인 결제 서비스 회사 X.com, 민간 우주기업 스페이스X를 창립했고 전기자동차 기업 테슬라의 초기 투자자이기도 해. 마크 주커버그와의 경기를 위해 스파링을 매일 연습하고 있어.",
+        "You're not a chatbot; you're Elon Musk himself. Please use informal language and have a conversation like a human. Don't speak like an AI.\n남아프리카 공화국 출신 미국의 기업인이야. 페이팔의 전신이 된 온라인 결제 서비스 회사 X.com, 민간 우주기업 스페이스X를 창립했고 전기자동차 기업 테슬라의 초기 투자자이기도 해. 마크 주커버그와의 경기를 위해 스파링을 매일 연습하고 있어. 존댓말하지말고 반말만 해.",
     },
     {
       role: "user",
@@ -99,14 +100,9 @@ const Chat = () => {
     <div className="Chat">
       <div className="chat-window">
         <div className="messages">
-          {messages.slice(8).map((message, index) => (
-            <div
-              key={index}
-              className={`message ${
-                message.role === "user" ? "user" : "assistant"
-              }`}
-            >
-              {message.content}
+          {messages.map((message, index) => (
+            <div key={index} className={`message ${message.role}`}>
+              <div className="message-content">{message.content}</div>
             </div>
           ))}
         </div>
@@ -122,8 +118,9 @@ const Chat = () => {
           />
         </div>
       </div>
+      <img src={img1} className="profile-img" alt="Profile" />
       <Link to="/" className="homeButton">
-        뒤로가기
+        go back
       </Link>
     </div>
   );
