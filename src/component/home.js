@@ -42,7 +42,7 @@ function Home() {
           <span className="img-description">Description</span>{" "}
         </Col>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
-          <Link to="/chat">
+          <Link to="/custom">
             <img src={image4} alt="" className="img-with-name" />
           </Link>
           <span className="img-description">Image 4</span>
