@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import "./chat.css";
 import jsonData from "./test.json"
-
-const API_KEY = "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";
+//api key 입력
+const API_KEY = "sk-";
 
 const configuration = new Configuration({
   apiKey: API_KEY,
