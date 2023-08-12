@@ -1,3 +1,17 @@
+image 4번 클릭시 json파일을 만드는 스크립트 실행
+나머지 123들은 test.json(고토 히토리)를 기반으로 만들어진 챗봇 유형
+**추후 버튼 링크만 바꿔서 커스텀 항목으로 만들면됨 
+
+character.js는 만들다 만거니까 신경 x
+
+병진이는 서버 구축만해서 json파일 다운로드 경로 로컬서버로 바꾸고 가져오는거 만들어주고
+준스기햄은 서버 디비에서 챗봇 목록가져와서 화면상에 image 1234 배치해주는거 하면 될듯 
+위 두개 다해서 나한테 말해주면 내가 custom.js 고쳐서 서버에서 챗봇 불러오는거랑 유료결제 시도해봄
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
