@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Configuration, OpenAIApi } from 'openai';
 import './chat.css';
 
-const API_KEY = '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';
+const API_KEY = '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';
 
 const configuration = new Configuration({
   apiKey: API_KEY,

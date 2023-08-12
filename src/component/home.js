@@ -28,8 +28,11 @@ function Home() {
     <div className="home-container">
       <div className="header">
         <Title className="home-title">CAKE Bot</Title>
-        <Link to="/custom" className="custom-link">
+        <Link to="/custom" className="link">
           custom
+        </Link>
+        <Link to="/sign" className="link">
+          signin
         </Link>
         <div>
             <button onClick={handleAddChatBot}>Add ChatBot</button>
