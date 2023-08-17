@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import { Link } from "react-router-dom";
 import "./chat.css";
-import img1 from "../img/musk.jpg";
 
-const API_KEY = "";
+const API_KEY = "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";
 
 const configuration = new Configuration({
   apiKey: API_KEY,
@@ -53,7 +52,7 @@ const Chat = () => {
     },
     {
       role: "assistant",
-      content: "(일론머스크는 복싱 연습을 하며 말한다)",
+      content: "(일론 머스크는 관심이 없다는 듯이 쳐다본다.)",
     },
   ]);
 
@@ -70,8 +69,8 @@ const Chat = () => {
         const response = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
           messages,
-          temperature: 0.3,
-          max_tokens: 90,
+          temperature: 0.2,
+          max_tokens: 120,
         });
 
         const assistantResponse = response.data.choices[0].message.content;
@@ -100,7 +99,7 @@ const Chat = () => {
     <div className="Chat">
       <div className="chat-window">
         <div className="messages">
-          {messages.map((message, index) => (
+          {messages.slice(8).map((message, index) => (
             <div key={index} className={`message ${message.role}`}>
               <div className="message-content">{message.content}</div>
             </div>
@@ -109,7 +108,7 @@ const Chat = () => {
         <div className="user-input">
           <input
             type="text"
-            placeholder="Type your message..."
+            placeholder="   하고 싶은 말을 작성해 보세요"
             onKeyUp={(e) => {
               if (e.key === "Enter") {
                 handleUserMessage(e.target.value, e);
@@ -118,9 +117,8 @@ const Chat = () => {
           />
         </div>
       </div>
-      <img src={img1} className="profile-img" alt="Profile" />
       <Link to="/" className="homeButton">
-        go back
+        홈으로
       </Link>
     </div>
   );

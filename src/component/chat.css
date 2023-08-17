@@ -19,15 +19,6 @@
   position: relative;
 }
 
-.profile-img {
-  position: absolute;
-  top: 130px;
-  left: 10px;
-  width: 500px;
-  height: auto;
-  border-radius: 10%;
-}
-
 .messages {
   display: flex;
   flex-direction: column;
@@ -68,4 +59,15 @@
   height: 40px; /* Adjust the height as needed */
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+.homeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
 }
