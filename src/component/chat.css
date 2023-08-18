@@ -8,6 +8,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   align-items: flex-end;
+  margin-bottom: 60px;
+  margin-top: 40px;
 }
 
 .Chat {
@@ -52,11 +54,12 @@
   bottom: 0;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 15px;
 }
 
 .user-input input {
   width: 24%;
-  height: 40px; /* Adjust the height as needed */
+  height: 30px; /* Adjust the height as needed */
   border: 1px solid #ccc;
   border-radius: 5px;
 }

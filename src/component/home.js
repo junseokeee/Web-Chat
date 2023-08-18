@@ -6,6 +6,7 @@ import logo from "../img/logo1.png";
 import musk from "../img/musk.jpg";
 import bill from "../img/Bill.jpeg";
 import ai from "../img/image3.jpeg";
+
 function Home() {
   return (
     <div className="home-container">
@@ -39,11 +40,14 @@ function Home() {
           </span>{" "}
         </Col>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
-          <Link to="/chat">
+          <Link to="/chat3">
             <img src={ai} alt="" className="img-with-name rounded-image" />
           </Link>
-          <span className="img-description-bold">Image 3</span>
-          <span className="img-description">Description</span>{" "}
+          <span className="img-description-bold">김슬기</span>
+          <span className="img-description">
+            백석대학교를 다니며 천안에서 살고 있다. 23살이며 PC방 아르바이트를
+            하고 있다...
+          </span>{" "}
         </Col>
         <Col xs={12} sm={8} md={6} lg={6} xl={6}>
           <Link to="/chat">
