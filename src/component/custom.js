@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function Custom() {
   const [characterName, setCharacterName] = useState('');
@@ -7,8 +8,9 @@ function Custom() {
   const [requestResponse, setRequestResponse] = useState('');
   const [apologizeResponse, setApologizeResponse] = useState('');
   const [angerResponse, setAngerResponse] = useState('');
+  const SERVER_URL = 'http://localhost:4000';
 
-  const handleSaveInteraction = () => {
+  const handleSaveInteraction = async () => {
     const interactions = [
       { role: 'system', content: conceptResponse },
       { role: 'assistant', content: greetResponse },
@@ -20,23 +22,15 @@ function Custom() {
       character: { name: characterName },
       interactions: interactions
     };
-
-    const fileName = `${characterName}_data.json`;
-
-    // Create a Blob with the JSON data and save it as a file
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    link.click();
-
-    // Save data to localStorage
-    let existingData = JSON.parse(localStorage.getItem('interactionData')) || [];
-    existingData.push(data);
-    localStorage.setItem('interactionData', JSON.stringify(existingData));
-
-    alert('Data saved successfully!');
+  
+    try {
+      const response = await axios.post('http://localhost:4000/uploadInteraction', data);
+      console.log(response.data);
+      alert('Data saved successfully!');
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while saving data.');
+    }
   };
 
   return (
@@ -47,7 +41,7 @@ function Custom() {
         <input type="text" value={characterName} onChange={e => setCharacterName(e.target.value)} />
       </div>
       <div>
-      <label>Character Concept:</label>
+        <label>Character Concept:</label>
         <input type="text" value={conceptResponse} onChange={e => setConceptResponse(e.target.value)} />
       </div>
       <div>
